@@ -80,7 +80,7 @@ $('#buttonRemoveQuantity').click(function () {
 
 $('.removeFromCart').click(function() {
     $(this).closest('li').remove();
-    $('#cart').addClass('open2');
+    //$('#cart').addClass('open2');
 });
 
 /*
