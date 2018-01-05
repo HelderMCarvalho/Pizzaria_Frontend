@@ -78,7 +78,22 @@ $('#buttonRemoveQuantity').click(function () {
     }
 });
 
+//Remover Pizza do Carrinho
 $('.removeFromCart').click(function(event) {
     $(this).closest('li').remove();
     event.stopPropagation();
+});
+
+//Calcular Preço da Pizza
+var anterior;
+$('select.form-control').focus(function () {
+    anterior = parseInt($(this).find('option:selected').attr('price'));
+    // alert($(this).val());
+    // alert($(this).find('option:selected').attr('price'));
+}).change(function () {
+    var price = parseInt($('#price').text()) + parseInt($(this).find('option:selected').attr('price')) - anterior;
+    $('#price').html(price);
+    anterior = parseInt($(this).find('option:selected').attr('price'));
+    // alert($(this).val());
+    // alert($(this).find('option:selected').attr('price'));
 });
