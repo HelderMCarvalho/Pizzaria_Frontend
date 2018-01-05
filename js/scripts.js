@@ -78,13 +78,7 @@ $('#buttonRemoveQuantity').click(function () {
     }
 });
 
-$('.removeFromCart').click(function() {
+$('.removeFromCart').click(function(event) {
     $(this).closest('li').remove();
-    //$('#cart').addClass('open2');
+    event.stopPropagation();
 });
-
-/*
-//Tentativa de resolução do problema mas não funciona como pretendido
-$('.dropdown-toggle').click(function() {
-    $('#cart').removeClass('open2');
-});*/
