@@ -1,68 +1,15 @@
-//Soked Sausage
-$('#buttonSmokedSausage').click(function () {
-    $('#inputSmokedSausage').toggle().val(0);
-    $('#buttonAddSmokedSausage').toggle();
-    $('#buttonRemoveSmokedSausage').toggle();
+//Ingredient Slider
+$('.btn-toggle').click(function () {
+    $(this).parent().children('div.form-group').children('input').toggle().val(0).next('.buttonAddIngredient').toggle().next('.buttonRemoveIngredient').toggle();
 });
-$('#buttonAddSmokedSausage').click(function () {
-    if($('#inputSmokedSausage').val()<10){
-        $('#inputSmokedSausage').val(eval(+$('#inputSmokedSausage').val()+1));
+$('.buttonAddIngredient').click(function () {
+    if($(this).prevAll('input').val()<10){
+        $(this).prevAll('input').val(eval(+$(this).prevAll('input').val()+1));
     }
 });
-$('#buttonRemoveSmokedSausage').click(function () {
-    if($('#inputSmokedSausage').val()>0){
-        $('#inputSmokedSausage').val(eval(+$('#inputSmokedSausage').val()-1));
-    }
-});
-
-//Potato Dipper
-$('#buttonPotatoDipper').click(function () {
-    $('#inputPotatoDipper').toggle().val(0);
-    $('#buttonAddPotatoDipper').toggle();
-    $('#buttonRemovePotatoDipper').toggle();
-});
-$('#buttonAddPotatoDipper').click(function () {
-    if($('#inputPotatoDipper').val()<10){
-        $('#inputPotatoDipper').val(eval(+$('#inputPotatoDipper').val()+1));
-    }
-});
-$('#buttonRemovePotatoDipper').click(function () {
-    if($('#inputPotatoDipper').val()>0){
-        $('#inputPotatoDipper').val(eval(+$('#inputPotatoDipper').val()-1));
-    }
-});
-
-//Bacon
-$('#buttonBacon').click(function () {
-    $('#inputBacon').toggle().val(0);
-    $('#buttonAddBacon').toggle();
-    $('#buttonRemoveBacon').toggle();
-});
-$('#buttonAddBacon').click(function () {
-    if($('#inputBacon').val()<10){
-        $('#inputBacon').val(eval(+$('#inputBacon').val()+1));
-    }
-});
-$('#buttonRemoveBacon').click(function () {
-    if($('#inputBacon').val()>0){
-        $('#inputBacon').val(eval(+$('#inputBacon').val()-1));
-    }
-});
-
-//Ham
-$('#buttonHam').click(function () {
-    $('#inputHam').toggle().val(0);
-    $('#buttonAddHam').toggle();
-    $('#buttonRemoveHam').toggle();
-});
-$('#buttonAddHam').click(function () {
-    if($('#inputHam').val()<10){
-        $('#inputHam').val(eval(+$('#inputHam').val()+1));
-    }
-});
-$('#buttonRemoveHam').click(function () {
-    if($('#inputHam').val()>0){
-        $('#inputHam').val(eval(+$('#inputHam').val()-1));
+$('.buttonRemoveIngredient').click(function () {
+    if($(this).prevAll('input').val()>0){
+        $(this).prevAll('input').val(eval(+$(this).prevAll('input').val()-1));
     }
 });
 
@@ -97,3 +44,5 @@ $('select.form-control').focus(function () {
     // alert($(this).val());
     // alert($(this).find('option:selected').attr('price'));
 });
+
+//Fazer Adicionar ao carrinho (falta somar ao preço os ingredientes)

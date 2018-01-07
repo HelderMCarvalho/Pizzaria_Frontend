@@ -71,10 +71,28 @@ html, body{
 }
 .ingredientPicker{
     margin-bottom: 15px;
-    height: 34px;
 }
-.ingredientPicker .form-group{
-    height: 34px;
+
+@media (max-width: 767px){
+    .ingredientPicker .form-group{
+        text-align: center;
+    }
+    .ingredientPicker input[type=number]{
+        width: auto;
+        display: inline-block;
+        vertical-align: middle;
+    }
+}
+@media (min-width: 768px){
+    .ingredientPicker{
+        margin-bottom: 0px;
+    }
+    .ingredientPicker .form-group{
+        height: 34px;
+    }
+    .ingredientPicker .form-inline{
+        margin-bottom: 15px;
+    }
 }
 
 /* Bootstrap Button Toggle */
@@ -164,7 +182,8 @@ html, body{
     background-color: #d9534f;
 }
 .btn-toggle.btn-lg {
-    margin: 0 5rem;
+    margin-left: 10px;
+    margin-right: 10px;
     padding: 0;
     position: relative;
     border: none;
