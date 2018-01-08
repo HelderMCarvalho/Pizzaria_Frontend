@@ -1,15 +1,31 @@
 //Ingredient Slider
 $('.btn-toggle').click(function () {
+    var quantity = $(this).parent().children('div.form-group').children('input').val();
     $(this).parent().children('div.form-group').children('input').toggle().val(0).next('.buttonAddIngredient').toggle().next('.buttonRemoveIngredient').toggle();
+    var price = parseFloat($('#price').text()) - (quantity * parseFloat($(this).parent().children('div.form-group').children('input').attr('price')));
+    $('#price').html(price.toFixed(2));
+});
+$('.btn-toggle').parent().children('div.form-group').children('input').focus(function () {
+    anterior = parseFloat(($(this).val())) * parseFloat($(this).attr('price'));
+}).keyup(function () {
+    if($(this).val()){
+        var price = parseFloat($('#price').text()) + (parseFloat(($(this).val())) * parseFloat($(this).attr('price'))) - anterior;
+        $('#price').html(price.toFixed(2));
+        anterior = parseFloat(($(this).val())) * parseFloat($(this).attr('price'));
+    }
 });
 $('.buttonAddIngredient').click(function () {
     if($(this).prevAll('input').val()<10){
         $(this).prevAll('input').val(eval(+$(this).prevAll('input').val()+1));
+        var price = parseFloat($('#price').text()) + parseFloat($(this).prevAll('input').attr('price'));
+        $('#price').html(price.toFixed(2));
     }
 });
 $('.buttonRemoveIngredient').click(function () {
     if($(this).prevAll('input').val()>0){
         $(this).prevAll('input').val(eval(+$(this).prevAll('input').val()-1));
+        var price = parseFloat($('#price').text()) - parseFloat($(this).prevAll('input').attr('price'));
+        $('#price').html(price.toFixed(2));
     }
 });
 
@@ -34,15 +50,11 @@ $('.removeFromCart').click(function(event) {
 //Calcular Preço da Pizza
 var anterior;
 $('select.form-control').focus(function () {
-    anterior = parseInt($(this).find('option:selected').attr('price'));
-    // alert($(this).val());
-    // alert($(this).find('option:selected').attr('price'));
+    anterior = parseFloat($(this).find('option:selected').attr('price'));
 }).change(function () {
-    var price = parseInt($('#price').text()) + parseInt($(this).find('option:selected').attr('price')) - anterior;
-    $('#price').html(price);
-    anterior = parseInt($(this).find('option:selected').attr('price'));
-    // alert($(this).val());
-    // alert($(this).find('option:selected').attr('price'));
+    var price = parseFloat($('#price').text()) + parseFloat($(this).find('option:selected').attr('price')) - anterior;
+    $('#price').html(price.toFixed(2));
+    anterior = parseFloat($(this).find('option:selected').attr('price'));
 });
 
-//Fazer Adicionar ao carrinho (falta somar ao preço os ingredientes)
+//Adicionar ao carrinho (O carrinho será guardado na BD logo, o conteudo do Carrinho está na BD)
