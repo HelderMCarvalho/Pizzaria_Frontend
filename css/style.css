@@ -21,6 +21,13 @@
     background-color: #222;
     margin-top: 20px;
 }
+.navbar-inverse .navbar-nav .open .dropdown-menu>li>a{
+    color: black;
+}
+.navbar-inverse .navbar-nav .open .dropdown-menu>li>a:hover{
+    color: black;
+    background-color: #f3f3f3;
+}
 html, body{
     height:100%;
 }
